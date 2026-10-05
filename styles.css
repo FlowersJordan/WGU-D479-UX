@@ -1,0 +1,427 @@
+/* =========================================================
+   Vela Island - styles.css
+   1. Variables  2. Base  3. Layout  4. Header  5. Hero
+   6. Sections   7. Cards 8. Form    9. Footer 10. Responsive
+   ========================================================= */
+
+/* ---------- 1. VARIABLES ---------- */
+:root {
+  --ink: #0a2e38;        /* deep lagoon, main text + dark sections */
+  --lagoon: #168aad;     /* links and accents */
+  --seafoam: #b8e6dc;    /* tinted backgrounds */
+  --sun: #ffb703;        /* buttons and the sun */
+  --paper: #f7fbfa;      /* page background */
+  --white: #ffffff;
+
+  --font-heading: "Bricolage Grotesque", "Trebuchet MS", sans-serif;
+  --font-body: "Nunito Sans", Arial, sans-serif;
+
+  --radius: 14px;
+  --max-width: 1080px;
+}
+
+/* ---------- 2. BASE ---------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 70px; /* so the sticky header doesn't cover headings */
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+h1, h2, h3, .logo {
+  font-family: var(--font-heading);
+  line-height: 1.15;
+}
+
+h1 { font-size: clamp(2.2rem, 6vw, 4rem); font-weight: 800; }
+h2 { font-size: clamp(1.7rem, 4vw, 2.4rem); font-weight: 800; margin-bottom: 0.75rem; }
+h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.4rem; }
+
+p + p { margin-top: 1rem; }
+
+a { color: var(--lagoon); }
+
+:focus-visible {
+  outline: 3px solid var(--sun);
+  outline-offset: 3px;
+}
+
+/* ---------- 3. LAYOUT ---------- */
+.container {
+  width: 90%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.section {
+  padding: 5rem 0;
+}
+
+.section-tinted { background: var(--seafoam); }
+
+.section-dark {
+  background: var(--ink);
+  color: var(--white);
+}
+
+.section-intro {
+  margin-bottom: 2rem;
+  max-width: 50ch;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 0.85rem 1.6rem;
+  background: var(--sun);
+  color: var(--ink);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.btn:hover {
+  background: #ffc933;
+  transform: translateY(-2px);
+}
+
+.btn-small {
+  padding: 0.5rem 1.1rem;
+  font-size: 0.95rem;
+}
+
+/* ---------- 4. HEADER ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--ink);
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.9rem 0;
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--white);
+  text-decoration: none;
+}
+
+.main-nav ul {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  list-style: none;
+}
+
+.main-nav a {
+  color: var(--white);
+  text-decoration: none;
+}
+
+.main-nav a:not(.btn):hover {
+  color: var(--seafoam);
+  text-decoration: underline;
+}
+
+.main-nav a.btn { color: var(--ink); }
+
+.nav-toggle {
+  display: none; /* only shown on small screens, see section 10 */
+  background: none;
+  border: 2px solid var(--seafoam);
+  color: var(--white);
+  padding: 0.4rem 0.9rem;
+  border-radius: 8px;
+  font: inherit;
+  cursor: pointer;
+}
+
+/* ---------- 5. HERO ---------- */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 7rem 0 9rem;
+  color: var(--white);
+  /* sky: deep blue at top fading to warm light near the horizon */
+  background: linear-gradient(180deg, #0a2e38 0%, #168aad 60%, #7ed0c4 100%);
+}
+
+.sun {
+  position: absolute;
+  right: 12%;
+  bottom: 4rem;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: var(--sun);
+  box-shadow: 0 0 80px 30px rgba(255, 183, 3, 0.45);
+}
+
+.hero-content {
+  position: relative; /* keeps text above the sun */
+}
+
+.hero-content h1 { max-width: 14ch; }
+
+.hero-text {
+  max-width: 48ch;
+  margin: 1.25rem 0 2rem;
+  font-size: 1.15rem;
+}
+
+.wave {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 90px;
+  fill: var(--paper);
+}
+
+/* ---------- 6. ABOUT ---------- */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.stats {
+  list-style: none;
+  display: grid;
+  gap: 1rem;
+}
+
+.stats li {
+  padding: 1rem 1.25rem;
+  background: var(--white);
+  border-left: 6px solid var(--sun);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.stats strong {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1.9rem;
+  color: var(--lagoon);
+}
+
+/* ---------- 7. CARDS ---------- */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  padding-bottom: 1.5rem;
+}
+
+.card h3,
+.card p {
+  padding: 0 1.25rem;
+}
+
+.card h3 { margin-top: 1.1rem; }
+
+/* Each card has a colored panel instead of a photo.
+   Swap these for real <img> tags once you have photos. */
+.card-art {
+  height: 150px;
+}
+
+.art-reef   { background: linear-gradient(135deg, #168aad, #52b69a); }
+.art-trail  { background: linear-gradient(135deg, #2d6a4f, #95d5b2); }
+.art-sunset { background: linear-gradient(135deg, #ff7b54, #ffb703); }
+
+/* Stay list */
+.stay-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.stay {
+  padding: 1.5rem;
+  border: 2px solid var(--seafoam);
+  border-radius: var(--radius);
+  transition: border-color 0.2s ease;
+}
+
+.stay:hover { border-color: var(--lagoon); }
+
+.price {
+  margin-top: 1rem;
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--lagoon);
+}
+
+.price span {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--ink);
+}
+
+/* ---------- 8. FORM ---------- */
+.book-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.booking-form {
+  display: grid;
+  gap: 1.1rem;
+}
+
+.field { display: flex; flex-direction: column; gap: 0.35rem; }
+
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+label {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+input,
+select {
+  padding: 0.7rem 0.85rem;
+  font: inherit;
+  color: var(--ink);
+  background: var(--white);
+  border: 2px solid transparent;
+  border-radius: 8px;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--sun);
+}
+
+/* The JS adds this class when a field fails validation */
+input.invalid { border-color: #ff8a80; }
+
+.error {
+  min-height: 1.2em;
+  font-size: 0.85rem;
+  color: #ffb4ab;
+}
+
+.booking-form .btn { justify-self: start; }
+
+.form-result {
+  padding: 0;
+  color: var(--seafoam);
+}
+
+.form-result.show {
+  padding: 1rem 1.25rem;
+  background: rgba(184, 230, 220, 0.15);
+  border-left: 5px solid var(--seafoam);
+  border-radius: 8px;
+}
+
+/* ---------- 9. FOOTER ---------- */
+.site-footer {
+  background: #061f27;
+  color: var(--seafoam);
+  padding: 2.5rem 0 1.5rem;
+  font-size: 0.95rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.footer-grid p + p { margin-top: 0; }
+
+.copyright {
+  width: 90%;
+  max-width: var(--max-width);
+  margin: 2rem auto 0;
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+/* ---------- 10. RESPONSIVE ---------- */
+@media (max-width: 768px) {
+  .section { padding: 3.5rem 0; }
+
+  .nav-toggle { display: block; }
+
+  .main-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--ink);
+    padding: 1rem 5%;
+  }
+
+  .main-nav.open { display: block; }
+
+  .main-nav ul {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .hero { padding: 4.5rem 0 7rem; }
+
+  .sun {
+    width: 110px;
+    height: 110px;
+    right: 6%;
+    bottom: 5rem;
+  }
+
+  .about-grid,
+  .book-wrap {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .btn { transition: none; }
+}
