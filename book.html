@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Taniti Island | Plan Your Escape</title>
+  <meta name="description" content="Taniti Island: white sand, clear water, and slow mornings. Plan your trip.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Nunito+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ===== HEADER / NAV ===== -->
+  <header class="site-header">
+    <div class="container nav-bar">
+      <a href="index.html" class="logo">Taniti Island</a>
+
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mainNav">
+        Menu
+      </button>
+
+      <nav id="mainNav" class="main-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="activities.html">Things to do</a></li>
+          <li><a href="stay.html">Where to stay</a></li>
+          <li><a href="transportation.html">Transportation</a></li>
+          <li><a href="book.html" class="btn btn-small">Plan a trip</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+
+
+<main>
+    <!-- ===== BOOKING FORM ===== -->
+    <section id="book" class="section section-dark">
+      <div class="container book-wrap">
+        <div class="book-intro">
+          <h2>Plan your trip</h2>
+          <p>
+            Tell us when you want to come and where you want to stay. We will
+            email you within two days to confirm availability.
+          </p>
+        </div>
+
+        <form id="bookingForm" class="booking-form" novalidate>
+          <div class="field">
+            <label for="name">Full name</label>
+            <input type="text" id="name" name="name" autocomplete="name">
+            <span class="error" id="nameError"></span>
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" autocomplete="email">
+            <span class="error" id="emailError"></span>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="checkin">Arrive</label>
+              <input type="date" id="checkin" name="checkin">
+              <span class="error" id="checkinError"></span>
+            </div>
+
+            <div class="field">
+              <label for="checkout">Leave</label>
+              <input type="date" id="checkout" name="checkout">
+              <span class="error" id="checkoutError"></span>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="stayType">Stay type</label>
+              <select id="stayType" name="stayType">
+                <option value="140">Beach bungalow ($140/night)</option>
+                <option value="220">Garden villa ($220/night)</option>
+                <option value="75">Village guesthouse ($75/night)</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="guests">Guests</label>
+              <input type="number" id="guests" name="guests" min="1" max="4" value="2">
+              <span class="error" id="guestsError"></span>
+            </div>
+          </div>
+
+          <button type="submit" class="btn">Send request</button>
+
+          <p class="form-result" id="formResult" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+</main>
+
+ <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <p class="logo">Taniti Island</p>
+
+      <p>hello@Tanitiisland.example</p>
+    </div>
+    <p class="copyright">&copy; 2026 Taniti Island. Student prototype.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
