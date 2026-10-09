@@ -1,5 +1,5 @@
 /* =========================================================
-   Vela Island - styles.css
+   Taniti Island - styles.css
    1. Variables  2. Base  3. Layout  4. Header  5. Hero
    6. Sections   7. Cards 8. Form    9. Footer 10. Responsive
    ========================================================= */
@@ -379,6 +379,61 @@ input.invalid { border-color: #ff8a80; }
   margin: 2rem auto 0;
   font-size: 0.85rem;
   opacity: 0.7;
+}
+
+/* ---------- 9b. ABOUT + TRANSPORTATION PAGES ---------- */
+.art-city    { background: linear-gradient(135deg, #168aad, #b8e6dc); }
+.art-landing { background: linear-gradient(135deg, #0a2e38, #52b69a); }
+.art-volcano { background: linear-gradient(135deg, #7a2e1d, #ff7b54); }
+
+/* Short run of activity names */
+.pill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  list-style: none;
+  margin: 1.5rem 0;
+}
+
+.pill-list li {
+  padding: 0.4rem 1rem;
+  background: var(--seafoam);
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.pill-list li.soon {
+  background: var(--white);
+  border: 2px dashed var(--lagoon);
+}
+
+/* Small info cards */
+.fact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+}
+
+.fact {
+  padding: 1.25rem 1.5rem;
+  background: var(--white);
+  border-left: 6px solid var(--sun);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.fact h3 { font-size: 1.1rem; }
+
+.fact p + p { margin-top: 0.6rem; }
+
+/* Call-to-action band */
+.cta {
+  text-align: center;
+}
+
+.cta p {
+  max-width: 48ch;
+  margin: 0 auto 1.75rem;
 }
 
 /* ---------- 10. RESPONSIVE ---------- */

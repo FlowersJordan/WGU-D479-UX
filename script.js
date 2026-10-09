@@ -1,4 +1,4 @@
-// Vela Island - script.js
+// Taniti Island - script.js
 // Two jobs: (1) open/close the mobile menu, (2) validate the booking form.
 
 // ---------- 1. MOBILE MENU ----------
@@ -19,13 +19,16 @@ mainNav.addEventListener("click", function (event) {
 });
 
 // ---------- 2. BOOKING FORM ----------
+// This script is loaded on every page, but the form only exists on book.html.
 const form = document.getElementById("bookingForm");
 const result = document.getElementById("formResult");
 
 // Don't allow dates in the past
-const today = new Date().toISOString().split("T")[0];
-document.getElementById("checkin").min = today;
-document.getElementById("checkout").min = today;
+if (form) {
+  const today = new Date().toISOString().split("T")[0];
+  document.getElementById("checkin").min = today;
+  document.getElementById("checkout").min = today;
+}
 
 // Show or clear an error under a field
 function setError(fieldId, message) {
@@ -35,7 +38,7 @@ function setError(fieldId, message) {
   input.classList.toggle("invalid", message !== "");
 }
 
-form.addEventListener("submit", function (event) {
+if (form) form.addEventListener("submit", function (event) {
   event.preventDefault(); // stop the page from reloading
 
   const name = document.getElementById("name").value.trim();
